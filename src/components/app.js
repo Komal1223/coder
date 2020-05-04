@@ -1,21 +1,24 @@
-import React, {useState} from "react";
+import React from "react";
 import ReactDOM from "react-dom";
+import Container from "@material-ui/core/Container";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 
-export default function Form() {
-    const [count, setCount] = useState(0);
+import CounterView from "./counter-view";
 
-    return[<div>
-        <p>You clicked the button {count} times</p>
-        <button onClick={() => setCount(count+1)}>Clicked</button>
-    </div>]
+export default function App() {
+    return (
+        <Container>
+            <h1>View</h1>
+            <CounterView/>
+         </Container>
+    )
 }
 
 const wrapper = document.getElementById("container");
 wrapper ? ReactDOM.render(<Router>
     <Switch>
-        <Route exact={true} path={'/welcome'} component={Form}/>
+        <Route exact={true} path={'/welcome'} component={App}/>
         <Route render={ () => <Redirect to={'/welcome'}/>} />
     </Switch>
-
+    
 </Router>, wrapper) : false;

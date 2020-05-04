@@ -9,6 +9,7 @@ module.exports = {
     },
     devServer: {
         contentBase: './build',
+        historyApiFallback: true,
     },
     module: {
         rules: [
